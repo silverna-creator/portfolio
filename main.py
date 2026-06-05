@@ -84,6 +84,9 @@ def main(page: ft.Page):
 
             ft.Text(
                 "Certificates available in PDF format.",
+                t.Text("📄 View Certificates:", size=14, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+ft.Text("All 6 MATLAB certificates are stored in the GitHub repository", size=12, color="white70"),
+ft.Text("GitHub Link: github.com/silverna-creator/portfolio/tree/main/certificates", size=12, color="#9bbcff"),
                 italic=True,
                 color="#9bbcff",
             ),
