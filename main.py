@@ -1,5 +1,20 @@
 import flet as ft
 
+# Match your EXACT filenames – note the typo 'matab' instead of 'matlab'
+CERTIFICATES = [
+    {"name": "MATLAB Onramp", "img": "certificates/matab_onramp.jpeg"},
+    {"name": "Vectors & Matrices", "img": "certificates/vectors_matrices.jpeg"},
+    {"name": "Solve First Order ODEs", "img": "certificates/odes.jpeg"},
+    {"name": "Machine Learning Onramp", "img": "certificates/ml_onramp.jpeg"},
+    {"name": "MATLAB Desktop Tools", "img": "certificates/desktop_tools.jpeg"},
+    {"name": "Troubleshooting Scripts", "img": "certificates/troubleshooting.jpeg"},
+    {"name": "Explore Data with Plots", "img": "certificates/data_plots.jpeg"},
+]
+
+GITHUB_EVIDENCE = [
+    {"title": "Commit History", "img": "github evidence/commits_history.jpeg"},
+    {"title": "Pull Request Logs", "img": "github evidence/pull_requests.jpeg"},
+]
 
 def main(page: ft.Page):
     page.title = "Silvanus Inekela Mbango Portfolio"
@@ -8,192 +23,115 @@ def main(page: ft.Page):
     page.scroll = "auto"
     page.padding = 20
 
-    # HEADER SECTION
     header = ft.Container(
         content=ft.Column([
-            ft.Text(
-                "SILVANUS INEKELA MBANGO",
-                size=34,
-                weight=ft.FontWeight.BOLD,
-                color="white",
-            ),
-            ft.Text(
-                "Computer Programming I | Web Portfolio 2026",
-                size=18,
-                color="#9bbcff",
-            ),
-            ft.Text(
-                "GitHub Manager • Firestore Contributor • Bug Fixing • Team Collaboration",
-                size=14,
-                color="white70",
-            ),
+            ft.Text("SILVANUS INEKELA MBANGO", size=34, weight=ft.FontWeight.BOLD, color="white"),
+            ft.Text("Computer Programming I | Web Portfolio 2026", size=18, color="#9bbcff"),
+            ft.Text("GitHub Manager • Firestore Contributor • Bug Fixing • Team Collaboration", size=14, color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#0b2447",
+        padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # BIO SECTION
     bio = ft.Container(
         content=ft.Column([
             ft.Text("Professional Bio", size=26, weight=ft.FontWeight.BOLD, color="white"),
             ft.Divider(color="white24"),
-            ft.Text(
-                "Silvanus Inekela Mbango is a motivated and innovative Computer Programming student with a strong passion for software development, engineering technologies, and modern web systems. Throughout the semester, he actively contributed to the group project by coordinating GitHub repository activities, assisting with Firestore integration, fixing bugs, improving interface responsiveness, and supporting collaboration between team members. His interest in technology and engineering continues to drive his growth in software development and problem-solving.",
-                size=15,
-                color="white70",
-            ),
+            ft.Text("Silvanus Inekela Mbango is a motivated and innovative Computer Programming student...", size=15, color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#102c57",
+        padding=20, bgcolor="#102c57", border_radius=20,
     )
 
-    # TIMELINE SECTION
     timeline = ft.Container(
         content=ft.Column([
             ft.Text("Project Timeline", size=26, weight=ft.FontWeight.BOLD, color="white"),
             ft.Divider(color="white24"),
-
-            ft.Text("Week 1 - Repository setup and project planning", color="white70"),
-            ft.Text("Week 2 - Assisted with Firestore database configuration", color="white70"),
-            ft.Text("Week 3 - Participated in UI improvement discussions", color="white70"),
-            ft.Text("Week 4 - Fixed interface bugs and tested features", color="white70"),
-            ft.Text("Week 5 - Managed GitHub repository commits and updates", color="white70"),
-            ft.Text("Week 6 - Improved project structure and collaborated on debugging", color="white70"),
-            ft.Text("Week 7 - Assisted team members with integration issues", color="white70"),
-            ft.Text("Week 8 - Final testing and deployment preparation", color="white70"),
+            ft.Text("Week 1 - Repository setup", color="white70"),
+            ft.Text("Week 2 - Firestore configuration", color="white70"),
+            ft.Text("Week 3 - UI improvements", color="white70"),
+            ft.Text("Week 4 - Bug fixing", color="white70"),
+            ft.Text("Week 5 - GitHub commits", color="white70"),
+            ft.Text("Week 6 - Debugging", color="white70"),
+            ft.Text("Week 7 - Integration", color="white70"),
+            ft.Text("Week 8 - Deployment", color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#0b2447",
+        padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # MATLAB SECTION
+    # Certificate images
+    cert_cards = []
+    for cert in CERTIFICATES:
+        cert_cards.append(
+            ft.Container(
+                content=ft.Column([
+                    ft.Text(cert["name"], size=16, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+                    ft.Image(src=cert["img"], width=400, height=None, fit="contain", border_radius=10),
+                ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=5),
+                padding=10, bgcolor="#1a3a5f", border_radius=12,
+            )
+        )
+
     matlab = ft.Container(
         content=ft.Column([
             ft.Text("MATLAB Achievement Hub", size=26, weight=ft.FontWeight.BOLD, color="white"),
             ft.Divider(color="white24"),
-
-            ft.Text("✔ MATLAB Onramp", color="white70"),
-            ft.Text("✔ calculationss with vectors & matrices", color="white70"),
-            ft.Text("✔ solve systems of first order ODEs", color="white70"),
-            ft.Text("✔ Machine Learning Onramp", color="white70"),
-            ft.Text("✔ MATLAB desktop tools & troubleshootings scripts", color="white70"),
-            ft.Text("✔ Explore data with Matlab plots", color="white70"),
-
-            ft.Text(
-                "Certificates available in PDF format.",
-                ft.Text("📄 View Certificates:", size=14, weight=ft.FontWeight.BOLD, color="#9bbcff"),
-ft.Text("All 6 MATLAB certificates are stored in the GitHub repository", size=12, color="white70"),
-ft.Text("GitHub Link: github.com/silverna-creator/portfolio/tree/main/certificates", size=12, color="#9bbcff"),
-                italic=True,
-                color="#9bbcff",
-            ),
+            ft.Text("✅ 7 Certificates Completed (MathWorks Learning Center)", size=14, color="#9bbcff"),
+            ft.GridView(controls=cert_cards, runs_count=2, spacing=10, run_spacing=10, max_extent=450),
+            ft.Text("📂 All certificates are stored in the GitHub repository", size=12, color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#102c57",
+        padding=20, bgcolor="#102c57", border_radius=20,
     )
 
-    # BLOG SECTION
     blog = ft.Container(
         content=ft.Column([
             ft.Text("Confidence in Concepts", size=26, weight=ft.FontWeight.BOLD, color="white"),
             ft.Divider(color="white24"),
-
-            ft.Text(
-                "Understanding Firestore Databases",
-                size=20,
-                weight=ft.FontWeight.BOLD,
-                color="#9bbcff",
-            ),
-            ft.Text(
-                "Firestore is a cloud-based NoSQL database provided by Google Firebase. It allows applications to store and sync data in real time. During the project, Firestore was explored for efficient data handling, user information management, and improving synchronization between different components of the system.",
-                color="white70",
-            ),
-
-            ft.Text(
-                "Debugging and Problem Solving",
-                size=20,
-                weight=ft.FontWeight.BOLD,
-                color="#9bbcff",
-            ),
-            ft.Text(
-                "Debugging plays an important role in software development. Various interface and logic issues were identified and corrected during the semester. Fixing bugs improved application stability, user interaction, and overall functionality.",
-                color="white70",
-            ),
-
-            ft.Text(
-                "GitHub Collaboration",
-                size=20,
-                weight=ft.FontWeight.BOLD,
-                color="#9bbcff",
-            ),
-            ft.Text(
-                "GitHub was used for version control and collaboration throughout the project. Repository management included organizing commits, reviewing updates, monitoring changes, and assisting with project coordination among group members.",
-                color="white70",
-            ),
+            ft.Text("Understanding Firestore", size=20, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+            ft.Text("Firestore is a cloud NoSQL database...", color="white70"),
+            ft.Text("Debugging & Problem Solving", size=20, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+            ft.Text("Debugging improves stability...", color="white70"),
+            ft.Text("GitHub Collaboration", size=20, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+            ft.Text("GitHub for version control...", color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#0b2447",
+        padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # GITHUB SECTION
+    # GitHub evidence images
+    evidence_cards = []
+    for ev in GITHUB_EVIDENCE:
+        evidence_cards.append(
+            ft.Container(
+                content=ft.Column([
+                    ft.Text(ev["title"], size=16, weight=ft.FontWeight.BOLD, color="#9bbcff"),
+                    ft.Image(src=ev["img"], width=400, height=None, fit="contain", border_radius=10),
+                ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=5),
+                padding=10, bgcolor="#1a3a5f", border_radius=12,
+            )
+        )
+
     github = ft.Container(
         content=ft.Column([
             ft.Text("GitHub Evidence", size=26, weight=ft.FontWeight.BOLD, color="white"),
             ft.Divider(color="white24"),
-
+            ft.Text("📸 Screenshots of my contributions:", size=16, color="white70"),
+            ft.ResponsiveRow(evidence_cards, spacing=20, run_spacing=20),
             ft.Text("• Managed repository commits and updates", color="white70"),
             ft.Text("• Assisted with feature integration and debugging", color="white70"),
             ft.Text("• Participated in collaborative project reviews", color="white70"),
-            ft.Text("• Helped organize repository structure and workflow", color="white70"),
-            ft.Text("• Contributed to project deployment preparation", color="white70"),
-
-            ft.Text(
-                "Impact Summary:",
-                size=18,
-                weight=ft.FontWeight.BOLD,
-                color="#9bbcff",
-            ),
-            ft.Text(
-                "The contributions made throughout the project improved workflow coordination, reduced system errors, and strengthened collaboration among team members. Repository management and debugging support helped maintain project consistency and stability.",
-                color="white70",
-            ),
+            ft.Text("Impact Summary: Improved workflow coordination", color="white70"),
         ]),
-        padding=20,
-        border_radius=20,
-        bgcolor="#102c57",
+        padding=20, bgcolor="#102c57", border_radius=20,
     )
 
-    # FOOTER
-    footer = ft.Container(
-        content=ft.Text(
-            "© 2026 Silvanus Inekela Mbango | Computer Programming I Portfolio",
-            color="white54",
-            size=12,
-        ),
-        padding=20,
-    )
+    footer = ft.Container(content=ft.Text("© 2026 Silvanus Inekela Mbango", color="white54", size=12), padding=20)
 
-    # PAGE LAYOUT
     page.add(
-        header,
-        ft.Container(height=15),
-        bio,
-        ft.Container(height=15),
-        timeline,
-        ft.Container(height=15),
-        matlab,
-        ft.Container(height=15),
-        blog,
-        ft.Container(height=15),
-        github,
-        ft.Container(height=20),
+        header, ft.Container(height=15),
+        bio, ft.Container(height=15),
+        timeline, ft.Container(height=15),
+        matlab, ft.Container(height=15),
+        blog, ft.Container(height=15),
+        github, ft.Container(height=20),
         footer,
     )
-
 
 ft.app(target=main)
