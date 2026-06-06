@@ -1,19 +1,24 @@
 import flet as ft
+import os
 
-# Match your EXACT filenames – note the typo 'matab' instead of 'matlab'
+# Get the absolute path to the folder containing this script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Certificate images – using absolute paths (works everywhere)
 CERTIFICATES = [
-    {"name": "MATLAB Onramp", "img": "certificates/matab_onramp.jpeg"},
-    {"name": "Vectors & Matrices", "img": "certificates/vectors_matrices.jpeg"},
-    {"name": "Solve First Order ODEs", "img": "certificates/odes.jpeg"},
-    {"name": "Machine Learning Onramp", "img": "certificates/ml_onramp.jpeg"},
-    {"name": "MATLAB Desktop Tools", "img": "certificates/desktop_tools.jpeg"},
-    {"name": "Troubleshooting Scripts", "img": "certificates/troubleshooting.jpeg"},
-    {"name": "Explore Data with Plots", "img": "certificates/data_plots.jpeg"},
+    {"name": "MATLAB Onramp", "img": os.path.join(BASE_DIR, "certificates", "matab_onramp.jpeg")},
+    {"name": "Vectors & Matrices", "img": os.path.join(BASE_DIR, "certificates", "vectors_matrices.jpeg")},
+    {"name": "Solve First Order ODEs", "img": os.path.join(BASE_DIR, "certificates", "odes.jpeg")},
+    {"name": "Machine Learning Onramp", "img": os.path.join(BASE_DIR, "certificates", "ml_onramp.jpeg")},
+    {"name": "MATLAB Desktop Tools", "img": os.path.join(BASE_DIR, "certificates", "desktop_tools.jpeg")},
+    {"name": "Troubleshooting Scripts", "img": os.path.join(BASE_DIR, "certificates", "troubleshooting.jpeg")},
+    {"name": "Explore Data with Plots", "img": os.path.join(BASE_DIR, "certificates", "data_plots.jpeg")},
 ]
 
+# GitHub evidence images – absolute paths
 GITHUB_EVIDENCE = [
-    {"title": "Commit History", "img": "github evidence/commits_history.jpeg"},
-    {"title": "Pull Request Logs", "img": "github evidence/pull_requests.jpeg"},
+    {"title": "Commit History", "img": os.path.join(BASE_DIR, "github evidence", "commits_history.jpeg")},
+    {"title": "Pull Request Logs", "img": os.path.join(BASE_DIR, "github evidence", "pull_requests.jpeg")},
 ]
 
 def main(page: ft.Page):
@@ -23,6 +28,7 @@ def main(page: ft.Page):
     page.scroll = "auto"
     page.padding = 20
 
+    # Header
     header = ft.Container(
         content=ft.Column([
             ft.Text("SILVANUS INEKELA MBANGO", size=34, weight=ft.FontWeight.BOLD, color="white"),
@@ -32,6 +38,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
+    # Bio
     bio = ft.Container(
         content=ft.Column([
             ft.Text("Professional Bio", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -41,6 +48,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#102c57", border_radius=20,
     )
 
+    # Timeline
     timeline = ft.Container(
         content=ft.Column([
             ft.Text("Project Timeline", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -57,7 +65,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # Certificate images
+    # MATLAB section – large images (no click)
     cert_cards = []
     for cert in CERTIFICATES:
         cert_cards.append(
@@ -81,6 +89,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#102c57", border_radius=20,
     )
 
+    # Blog section
     blog = ft.Container(
         content=ft.Column([
             ft.Text("Confidence in Concepts", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -95,7 +104,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # GitHub evidence images
+    # GitHub Evidence section – large images
     evidence_cards = []
     for ev in GITHUB_EVIDENCE:
         evidence_cards.append(
