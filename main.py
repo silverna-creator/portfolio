@@ -1,24 +1,19 @@
 import flet as ft
-import os
 
-# Get the absolute path to the folder containing this script
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Certificate images – using absolute paths (works everywhere)
+# Raw GitHub URLs (always work on Render)
 CERTIFICATES = [
-    {"name": "MATLAB Onramp", "img": os.path.join(BASE_DIR, "certificates", "matab_onramp.jpeg")},
-    {"name": "Vectors & Matrices", "img": os.path.join(BASE_DIR, "certificates", "vectors_matrices.jpeg")},
-    {"name": "Solve First Order ODEs", "img": os.path.join(BASE_DIR, "certificates", "odes.jpeg")},
-    {"name": "Machine Learning Onramp", "img": os.path.join(BASE_DIR, "certificates", "ml_onramp.jpeg")},
-    {"name": "MATLAB Desktop Tools", "img": os.path.join(BASE_DIR, "certificates", "desktop_tools.jpeg")},
-    {"name": "Troubleshooting Scripts", "img": os.path.join(BASE_DIR, "certificates", "troubleshooting.jpeg")},
-    {"name": "Explore Data with Plots", "img": os.path.join(BASE_DIR, "certificates", "data_plots.jpeg")},
+    {"name": "MATLAB Onramp", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/matab_onramp.jpeg"},
+    {"name": "Vectors & Matrices", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/vectors_matrices.jpeg"},
+    {"name": "Solve First Order ODEs", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/odes.jpeg"},
+    {"name": "Machine Learning Onramp", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/ml_onramp.jpeg"},
+    {"name": "MATLAB Desktop Tools", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/desktop_tools.jpeg"},
+    {"name": "Troubleshooting Scripts", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/troubleshooting.jpeg"},
+    {"name": "Explore Data with Plots", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/certificates/data_plots.jpeg"},
 ]
 
-# GitHub evidence images – absolute paths
 GITHUB_EVIDENCE = [
-    {"title": "Commit History", "img": os.path.join(BASE_DIR, "github evidence", "commits_history.jpeg")},
-    {"title": "Pull Request Logs", "img": os.path.join(BASE_DIR, "github evidence", "pull_requests.jpeg")},
+    {"title": "Commit History", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/github%20evidence/commits_history.jpeg"},
+    {"title": "Pull Request Logs", "img": "https://raw.githubusercontent.com/silverna-creator/portfolio/main/github%20evidence/pull_requests.jpeg"},
 ]
 
 def main(page: ft.Page):
@@ -28,7 +23,6 @@ def main(page: ft.Page):
     page.scroll = "auto"
     page.padding = 20
 
-    # Header
     header = ft.Container(
         content=ft.Column([
             ft.Text("SILVANUS INEKELA MBANGO", size=34, weight=ft.FontWeight.BOLD, color="white"),
@@ -38,7 +32,6 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # Bio
     bio = ft.Container(
         content=ft.Column([
             ft.Text("Professional Bio", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -48,7 +41,6 @@ def main(page: ft.Page):
         padding=20, bgcolor="#102c57", border_radius=20,
     )
 
-    # Timeline
     timeline = ft.Container(
         content=ft.Column([
             ft.Text("Project Timeline", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -65,7 +57,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # MATLAB section – large images (no click)
+    # Certificate images
     cert_cards = []
     for cert in CERTIFICATES:
         cert_cards.append(
@@ -89,7 +81,6 @@ def main(page: ft.Page):
         padding=20, bgcolor="#102c57", border_radius=20,
     )
 
-    # Blog section
     blog = ft.Container(
         content=ft.Column([
             ft.Text("Confidence in Concepts", size=26, weight=ft.FontWeight.BOLD, color="white"),
@@ -104,7 +95,7 @@ def main(page: ft.Page):
         padding=20, bgcolor="#0b2447", border_radius=20,
     )
 
-    # GitHub Evidence section – large images
+    # GitHub evidence images
     evidence_cards = []
     for ev in GITHUB_EVIDENCE:
         evidence_cards.append(
